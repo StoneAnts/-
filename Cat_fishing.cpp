@@ -6,14 +6,14 @@ using namespace std;
 *version 1.0
 *date 2018.4.3
 */
-typedef struct queue      //¶ÓÁĞ½á¹¹Ìå
+typedef struct queue      //é˜Ÿåˆ—ç»“æ„ä½“
 {
 	int data[100];
 	int head;
 	int tail;
 }queue;
 
-typedef struct stack   //Õ»½á¹¹Ìå
+typedef struct stack   //æ ˆç»“æ„ä½“
 {
 	int data[100];
 	int top;
@@ -25,27 +25,27 @@ void play(queue q1, queue q2, stack s)
 
 	q1.head = q2.head = q1.tail = q2.tail = 0;  
 	s.top = 0;
-	for(i = 0; i < 6; i++)    //Ğ¡ºßÊÖÖĞµÄÅÆ£¬6ÕÅ
+	for(i = 0; i < 6; i++)    //å°å“¼æ‰‹ä¸­çš„ç‰Œï¼Œ6å¼ 
 	{
 		cin >> q1.data[i];
 		q1.tail++;
 	}
 
-	for(i = 0; i < 6; i++)  //Ğ¡¹şÊÖÖĞµÄÅÆ£¬6ÕÅ
+	for(i = 0; i < 6; i++)  //å°å“ˆæ‰‹ä¸­çš„ç‰Œï¼Œ6å¼ 
 	{
 		cin >> q2.data[i];
 		q2.tail++;
 	}
 
-	while(q1.head != q1.tail && q2.head != q2.tail)  //µ±Á½¸ö¶ÓÁĞ¶¼²»Îª¿ÕÊ±
+	while(q1.head != q1.tail && q2.head != q2.tail)  //å½“ä¸¤ä¸ªé˜Ÿåˆ—éƒ½ä¸ä¸ºç©ºæ—¶
 	{
-		s.data[++s.top] = q1.data[q1.head];   //Ğ¡ºß³öÅÆ£¬·Åµ½×À×ÓÉÏ£¨³ö¶Ó£¬½øÕ»£©
+		s.data[++s.top] = q1.data[q1.head];   //å°å“¼å‡ºç‰Œï¼Œæ”¾åˆ°æ¡Œå­ä¸Šï¼ˆå‡ºé˜Ÿï¼Œè¿›æ ˆï¼‰
 		q1.head++;
-		n=s.top;							//¼ÇÂ¼´ËÊ±×ÀÉÏµÄÅÆÊı
+		n=s.top;							//è®°å½•æ­¤æ—¶æ¡Œä¸Šçš„ç‰Œæ•°
 	
 			for(i = 1; i < n; i++)
 		{
-			if(s.data[i] == s.data[n])     //ÓĞÏàÍ¬µÄÅÆ£¬ÒÀ´Î°ÑÅÆ·Åµ½ÊÖÉÏ£¨³öÕ»£¬½ø¶Ó£©
+			if(s.data[i] == s.data[n])     //æœ‰ç›¸åŒçš„ç‰Œï¼Œä¾æ¬¡æŠŠç‰Œæ”¾åˆ°æ‰‹ä¸Šï¼ˆå‡ºæ ˆï¼Œè¿›é˜Ÿï¼‰
 				for(j = n; j >= i; j--)
 				{
 					q1.data[q1.tail] = s.data[j];
@@ -54,12 +54,12 @@ void play(queue q1, queue q2, stack s)
 				}
 		}
 		
-		s.data[++s.top] = q2.data[q2.head];  //Ğ¡¹ş³öÅÆ
+		s.data[++s.top] = q2.data[q2.head];  //å°å“ˆå‡ºç‰Œ
 		q2.head++;
-		n=s.top;							//¼ÇÂ¼´ËÊ±×ÀÃæÉÏµÄÅÆ
+		n=s.top;							//è®°å½•æ­¤æ—¶æ¡Œé¢ä¸Šçš„ç‰Œ
 		for(i = 1; i < n; i++)
 		{
-			if(s.data[i] == s.data[n])		//ÓĞÏàÍ¬µÄÅÆ£¬ÒÀ´Î°ÑÅÆ·Åµ½ÊÖÉÏ£¨³öÕ»£¬½ø¶Ó£©
+			if(s.data[i] == s.data[n])		//æœ‰ç›¸åŒçš„ç‰Œï¼Œä¾æ¬¡æŠŠç‰Œæ”¾åˆ°æ‰‹ä¸Šï¼ˆå‡ºæ ˆï¼Œè¿›é˜Ÿï¼‰
 				for(j = n; j >= i; j--)
 				{
 					q2.data[q2.tail] = s.data[j];
@@ -71,8 +71,8 @@ void play(queue q1, queue q2, stack s)
 
 	if(q1.head == q1.tail)
 	{
-		cout << "Ğ¡¹şÓ®À²!" << endl;
-		cout << "Ğ¡¹şÊÖÖĞµÄÅÆÊÇ:";
+		cout << "å°å“ˆèµ¢å•¦!" << endl;
+		cout << "å°å“ˆæ‰‹ä¸­çš„ç‰Œæ˜¯:";
 
 		for(i = q2.head; i < q2.tail; i++)
 		{
@@ -82,16 +82,16 @@ void play(queue q1, queue q2, stack s)
 
 	else if(q2.head == q2.tail)
 	{
-		cout << "Ğ¡ºßÓ®À²!" << endl;
-		cout << "Ğ¡ºßÊÖÖĞµÄÅÆÊÇ";
+		cout << "å°å“¼èµ¢å•¦!" << endl;
+		cout << "å°å“¼æ‰‹ä¸­çš„ç‰Œæ˜¯";
 		for(i = q1.head; i < q1.tail; i++)
 		{
 			cout << "q1.data[i]" << " ";
 		}
 	}
 
-	cout << "×ÀÉÏ»¹Ê£" << s.top << "ÕÅÅÆ" << endl;
-	cout << "ÄÇĞ©ÅÆ·Ö±ğÊÇ";
+	cout << "æ¡Œä¸Šè¿˜å‰©" << s.top << "å¼ ç‰Œ" << endl;
+	cout << "é‚£äº›ç‰Œåˆ†åˆ«æ˜¯";
 
 	for(i = 1; i <= s.top; i++)
 	{
@@ -101,8 +101,8 @@ void play(queue q1, queue q2, stack s)
 
 int main()
 {
-	queue q1, q2;	//q1ÎªĞ¡ºß£¬q2ÎªĞ¡¹ş
-	stack s;			//×À×ÓÉÏµÄÅÆÕ»
+	queue q1, q2;	//q1ä¸ºå°å“¼ï¼Œq2ä¸ºå°å“ˆ
+	stack s;			//æ¡Œå­ä¸Šçš„ç‰Œæ ˆ
 	
 	play(q1, q2, s);
 
